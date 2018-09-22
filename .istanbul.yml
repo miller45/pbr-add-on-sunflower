@@ -1,0 +1,8 @@
+instrumentation:
+  include-all-sources: false
+  default-excludes: true
+  excludes:
+    - app/reporter.js
+    - spec/**/*
+reporting:
+  dir: 'tmp/coverage/reporter'
