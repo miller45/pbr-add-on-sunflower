@@ -48,12 +48,12 @@ var countLogMessages = function (item) {
 };
 
 
-
 //</editor-fold>
 
 app.controller('ScreenshotReportController', function ($scope, $http) {
     var that = this;
-    var clientDefaults = {};//'<Client Defaults Replacement>';
+    var clientDefaults = appClientDefaults;
+    $scope.docTitle = clientDefaults.docTitle;
 
     $scope.searchSettings = Object.assign({
         description: '',
@@ -212,10 +212,14 @@ app.controller('ScreenshotReportController', function ($scope, $http) {
         return true;
     };
 
-    var results = [];//'<Results Replacement>';
+    var results = [];
+    if (loadedResults) {
+        results = loadedResults;
+    }
+
 
     this.sortSpecs = function () {
-        this.results = results.sort(defaultSortFunction/*<Sort Function Replacement>*/);
+        this.results = results.sort(defaultSortFunction);
     };
 
     this.sortSpecs();

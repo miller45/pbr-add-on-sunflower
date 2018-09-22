@@ -1,7 +1,4 @@
 
-const appPatcher= require('./spec/app-patcher');
-appPatcher(__dirname,'./lib/app.js', './tests/app/test_data.js', './tmp/tests/lib/app.js');
-
 module.exports = function (config) {
     config.set({
 
@@ -16,13 +13,15 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'lib/assets/angular.min.js',
-            'spec/app/lib/angular-mocks/angular-mocks.js',
+            'src/browser/assets/angular.min.js',
             'node_modules/babel-polyfill/dist/polyfill.js',
-            'lib/assets/jquery.min.js',
-            'lib/assets/bootstrap.min.js',
-            'lib/assets/buttons.js',
-            'tmp/tests/lib/app.js',
+            'src/browser/assets/jquery.min.js',
+            'src/browser/assets/bootstrap.min.js',
+            'src/browser/assets/buttons.js',
+            'src/browser/app_defaultoptions.js',
+            'src/browser/app_sortfunction.js',
+            'src/browser/app.js',
+            'spec/app/lib/angular-mocks/angular-mocks.js',
             'spec/app/test_data.js',
             'spec/app/app_test.js'
         ],
@@ -35,7 +34,7 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors:config.cc?{
-            'tmp/tests/lib/app.js': ['coverage']
+            'src/browser/app.js': ['coverage']
         }:{},
 
 

@@ -5,10 +5,10 @@
     <title>Protractor Screenshot Report</title>
 
     <link rel="stylesheet" href="assets/main.css">
-    <!-- Here will be CSS placed -->
     <script src="assets/angular.min.js"></script>
     <script src="app_sortfunction.js"></script>
     <script src="app_defaultoptions.js"></script>
+    <script src="data/combined-clean.js"></script>
     <script src="app.js"></script>
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
@@ -18,7 +18,7 @@
 
 <!-- Header -->
 <h2>
-    <!-- Here goes title -->
+    {{docTitle}}
     <div class="pull-right">
         <button class="btn btn-default" ng-class="{active: !ctrl.displayTime}"
                 ng-click="ctrl.displayTime = !ctrl.displayTime">TIME
