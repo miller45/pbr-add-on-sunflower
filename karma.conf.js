@@ -1,4 +1,3 @@
-
 module.exports = function (config) {
     config.set({
 
@@ -18,6 +17,7 @@ module.exports = function (config) {
             'src/browser/assets/jquery.min.js',
             'src/browser/assets/bootstrap.min.js',
             'src/browser/assets/buttons.js',
+            'src/browser/assets/main.js',
             'src/browser/app_defaultoptions.js',
             'src/browser/app_sortfunction.js',
             'src/browser/app.js',
@@ -33,9 +33,12 @@ module.exports = function (config) {
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors:config.cc?{
-            'src/browser/app.js': ['coverage']
-        }:{},
+        preprocessors: config.cc ? {
+            'src/browser/app.js': ['coverage'],
+            'src/browser/app_defaultoptions.js': ['coverage'],
+            'src/browser/app_sortfunction.js': ['coverage'],
+            'src/browser/assets/main.js': ['coverage']
+        } : {},
 
 
         // test results reporter to use

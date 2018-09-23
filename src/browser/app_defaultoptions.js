@@ -1,3 +1,3 @@
-var appClientDefaults = {
-    docTitle: "e2e report for me"
+var appClientDefaults ={
+    docTitle:"e2e test results"
 };

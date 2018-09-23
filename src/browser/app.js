@@ -251,7 +251,7 @@ app.controller('ScreenshotReportController', function ($scope, $http) {
     this.loadResultsViaAjax = function () {
 
         $http({
-            url: 'data/combined-clean.json',
+            url: 'combined-clean.json',
             method: 'GET'
         }).then(function (response) {
 

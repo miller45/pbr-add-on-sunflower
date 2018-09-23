@@ -105,7 +105,7 @@ describe("unit tests", function () {
             describe("crash scenarios", function () {
                 var authRequestHandler;
                 beforeEach(function () {
-                    authRequestHandler = $httpBackend.when("GET", "data/combined-clean.json")
+                    authRequestHandler = $httpBackend.when("GET", "combined-clean.json")
                         .respond(referenceTestResults);
                 });
                 afterEach(function () {
@@ -115,7 +115,7 @@ describe("unit tests", function () {
                 it("displays error on data json not found", function () {
                     authRequestHandler.respond(404, "Not found");
 
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     var seSpy = spyOn(controller, "showErrorMessage").and.callThrough();
@@ -128,7 +128,7 @@ describe("unit tests", function () {
             describe("nesting detecting", function () {
                 var authRequestHandler;
                 beforeEach(function () {
-                    authRequestHandler = $httpBackend.when("GET", "data/combined-clean.json")
+                    authRequestHandler = $httpBackend.when("GET", "combined-clean.json")
                         .respond(referenceTestResults);
                 });
                 afterEach(function () {
@@ -143,7 +143,7 @@ describe("unit tests", function () {
                 });
 
                 it("level 2 descriptions in testData are found", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     var parents = [];
@@ -175,7 +175,7 @@ describe("unit tests", function () {
                 });
 
                 it("level 3+ descriptions are formatted correctly", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     expect(controller.getParent("a|b|c")).toEqual("b");
@@ -185,7 +185,7 @@ describe("unit tests", function () {
                 });
 
                 it("getShortDescription gets actual describe text", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     var shortDescs = [];
@@ -216,7 +216,7 @@ describe("unit tests", function () {
                 });
 
                 it("getSpec gets always the top level describe text", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     var shortDescs = [];
@@ -250,7 +250,7 @@ describe("unit tests", function () {
             describe("reporting functions", function () {
                 var authRequestHandler;
                 beforeEach(function () {
-                    authRequestHandler = $httpBackend.when("GET", "data/combined-clean.json")
+                    authRequestHandler = $httpBackend.when("GET", "combined-clean.json")
                         .respond(referenceTestResults);
                 });
                 afterEach(function () {
@@ -264,7 +264,7 @@ describe("unit tests", function () {
                 });
 
                 it("applySmartHighlight with node_modules line", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     var lineWithNodePath = referenceTestResults[2].trace[0];
@@ -275,7 +275,7 @@ describe("unit tests", function () {
                 });
 
                 it("applySmartHighlight with misc lines", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
                     var sampleTrace = referenceTestResults[0].trace[0].split("\n");
@@ -299,7 +299,7 @@ describe("unit tests", function () {
                 });
 
                 it("check counters", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     expect($scope).toBeDefined();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
@@ -315,7 +315,7 @@ describe("unit tests", function () {
                 });
 
                 it("check percents", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     expect($scope).toBeDefined();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
@@ -329,7 +329,7 @@ describe("unit tests", function () {
                 });
 
                 it("sortingFunctions", function () {
-                    $httpBackend.expectGET("data/combined-clean.json");
+                    $httpBackend.expectGET("combined-clean.json");
                     var $scope = $rootScope.$new();
                     expect($scope).toBeDefined();
                     var controller = $controller("ScreenshotReportController", {$scope: $scope});
