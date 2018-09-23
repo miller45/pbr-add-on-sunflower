@@ -1,5 +1,6 @@
 var app = angular.module('reportingApp', []);
 
+
 //<editor-fold desc="global helpers">
 
 var isValueAnArray = function (val) {
@@ -45,6 +46,36 @@ var countLogMessages = function (item) {
             }
         }
     }
+};
+
+var formatErrorMessage = function (error) {
+    if (typeof error !== 'undefined') {
+        if (typeof error === 'string') {
+            return error;
+        }
+        if (typeof error.toString === 'function' && error.toString() !== '[object Object]') {
+
+            return error.toString();
+        }
+        var msgCol = "";
+        if (error.message) {
+            msgCol += error.message + " ";
+        }
+        if (error.status) {
+            msgCol += error.status + " ";
+        }
+        if (error.statusText) {
+            msgCol += error.statusText + " ";
+        }
+        if (error.config && error.config.url) {
+            msgCol += "url: " + error.config.url + " ";
+        }
+        if (msgCol.length > 0) {
+            return msgCol;
+        }
+
+    }
+    return "Unknown error";
 };
 
 
@@ -213,16 +244,33 @@ app.controller('ScreenshotReportController', function ($scope, $http) {
     };
 
     var results = [];
-    if (loadedResults) {
-        results = loadedResults;
-    }
 
+    this.sortSpecs = function (newResults) {
+        this.results = newResults.sort(defaultSortFunction);
+    };
+    this.loadResultsViaAjax = function () {
 
-    this.sortSpecs = function () {
-        this.results = results.sort(defaultSortFunction);
+        $http({
+            url: 'data/combined-clean.json',
+            method: 'GET'
+        }).then(function (response) {
+
+                if (response && response.data) {
+                    that.sortSpecs(response.data); // sortSpecs also sets this.results variable with the results
+                }
+            },
+            function (error) {
+                that.showErrorMessage("Failed loading test results: ", error);
+                console.error(error);
+            });
     };
 
-    this.sortSpecs();
+    this.showErrorMessage = function (msg, error) {
+        $scope.errorMessage = msg + formatErrorMessage(error);
+    };
+
+    this.loadResultsViaAjax();
+
 });
 
 app.filter('bySearchSettings', function () {

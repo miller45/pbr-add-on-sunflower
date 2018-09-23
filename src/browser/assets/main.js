@@ -30,29 +30,35 @@ if (typeof Object.assign !== 'function') {
     });
 }
 //</editor-fold>
-
-$(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-    setInterval(function () {
+(function(){
+    var checkForceTooltip = function (jselector) {
         //check if numbers in the graph are too small..then show tooltip
         var minWidth = 15;
-        var checkForceTooltip = function (jselector) {
-            var element$ = $(jselector);
-            var eWidth = element$.width();
-            if (eWidth < minWidth){
-                if(element$.attr("data-trigger") !== "manual" || element$.attr("aria-describedby") === undefined){
-                    element$.attr("data-trigger", "manual");
-                    element$.tooltip("show");
-                }
-            }else{
-                if(element$.attr("data-trigger") === "manual"){
-                    element$.removeAttr("data-trigger");
-                    element$.tooltip("hide");
-                }
-            }
-        };
-        checkForceTooltip(".progress-bar+.progress-bar-danger");
-        checkForceTooltip(".progress-bar+.progress-bar-warning");
+        var element$ = $(jselector);
+        var eWidth = element$.width();
+        if (eWidth < minWidth){
 
-    }, 1000);
-});
+            if(element$.attr("data-trigger") !== "manual" || element$.attr("aria-describedby") === undefined){
+                element$.attr("data-trigger", "manual");
+                element$.tooltip("show");
+            }//if data-trigger was set to manual the tooltip is already "visible"
+        }else{
+            if(element$.attr("data-trigger") === "manual"){
+                element$.removeAttr("data-trigger");
+                element$.tooltip("hide");
+            }
+        }
+    };
+
+    $(document).ready(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+        setInterval(function () {
+
+            checkForceTooltip(".progress-bar+.progress-bar-danger");
+            checkForceTooltip(".progress-bar+.progress-bar-warning");
+
+        }, 1000);
+    });
+
+})();

@@ -1,18 +1,33 @@
 {
-  "node": true,
-  "camelcase": true,
-  "curly": true,
-  "eqeqeq": true,
-  "latedef": true,
-  "newcap": true,
-  "noarg": true,
-  "undef": true,
-  "unused": true,
-  "trailing": true,
-  "maxdepth": 3,
-  "maxlen": 140,
-  "laxcomma": true,
-  "esnext": true
-
-
+    "node": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "undef": true,
+    "unused": true,
+    "trailing": true,
+    "maxdepth": 3,
+    "maxlen": 140,
+    "laxcomma": true,
+    "esnext": true,
+    "predef": [
+        "jasmine",
+        "describe",
+        "afterEach",
+        "beforeEach",
+        "module",
+        "inject",
+        "it",
+        "expect",
+        "beforeAll",
+        "afterAll",
+        "referenceTestResults",
+        "spyOn"
+        //"exampleVar",
+        //"anotherCoolGlobal",
+        //"iLoveDouglas"
+    ]
 }

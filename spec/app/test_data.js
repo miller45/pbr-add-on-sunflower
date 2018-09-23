@@ -232,4 +232,3 @@ var results = [
         "duration": 0
     }
 ];
-var loadedResults = results;

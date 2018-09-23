@@ -20,6 +20,7 @@
     "dojo"          : false,
 
     "predef"        : [  // Custom globals.
+        "angular"
         //"exampleVar",
         //"anotherCoolGlobal",
         //"iLoveDouglas"

@@ -8,7 +8,6 @@
     <script src="assets/angular.min.js"></script>
     <script src="app_sortfunction.js"></script>
     <script src="app_defaultoptions.js"></script>
-    <script src="data/combined-clean.js"></script>
     <script src="app.js"></script>
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
@@ -37,7 +36,7 @@
         </button>
     </div>
 </h2>
-
+<div ng-if="errorMessage" uib-alert class="alert alert-danger alert-danger-panel">{{errorMessage}}</div>
 <!-- Pass/Fail counts -->
 <div class="progress progress-striped">
     <div class="progress-bar progress-bar-success" ng-if="ctrl.passCount()" data-container="body" data-toggle="tooltip"

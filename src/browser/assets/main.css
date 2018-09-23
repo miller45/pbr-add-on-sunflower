@@ -125,3 +125,9 @@ table {
 .message:not(:first-child) {
     margin-top: 10px;
 }
+
+div.alert-danger-panel{
+    background-color: #f9bdbb;
+    border: 1px solid #f7a4af;
+    color: #e51c23;
+}

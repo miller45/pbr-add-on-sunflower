@@ -29,6 +29,8 @@
         "expect",
         "beforeAll",
         "afterAll",
+        "referenceTestResults",
+        "spyOn"
         //"exampleVar",
         //"anotherCoolGlobal",
         //"iLoveDouglas"
