@@ -20,7 +20,7 @@
     "reporter",
     "protractor html reporter addon"
   ],
-  "author": "Ramon Klein <ramon@elektrofisch.de",
+  "author": "Ramon Klein <ramonk@elektrofisch.de",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/miller45/pbr-addo-n-sunflower/issues"
